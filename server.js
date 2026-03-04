@@ -15,14 +15,14 @@ const pool = new Pool({
   },
 });
 
-app.get("/todo", async (req, res) => {
+app.get("/todoto", async (req, res) => {
   try {
     const result = await pool.query(
       "SELECT * FROM todo ORDER BY id ASC"
     );
     res.json(result.rows);
   } catch (error) {
-    console.error("Error fetching todo:", error);
+    console.error("Error fetching todoto:", error);
     res.status(500).json({ error: "Internal server error" });
   }
 });
