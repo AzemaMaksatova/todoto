@@ -15,14 +15,14 @@ const pool = new Pool({
   },
 });
 
-app.get("/todoto", async (req, res) => {
+app.get("/todo", async (req, res) => {
   try {
     const result = await pool.query(
       "SELECT * FROM todo ORDER BY id ASC"
     );
     res.json(result.rows);
   } catch (error) {
-    console.error("Error fetching todoto:", error);
+    console.error("Error fetching todo:", error);
     res.status(500).json({ error: "Internal server error" });
   }
 });
@@ -32,7 +32,6 @@ app.get("/", (req, res) => {
 });
 
 const PORT = process.env.PORT || 5000;
-
 app.listen(PORT, () => {
   console.log(`Server running on port ${PORT}`);
 });
